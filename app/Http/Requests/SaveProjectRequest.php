@@ -25,6 +25,7 @@ class SaveProjectRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => 'image',
             'title' => 'required',
             'url' => 'required',
             'description' => 'required'
@@ -34,8 +35,8 @@ class SaveProjectRequest extends FormRequest
     public function messages(){
 
         return [
-            'title.required'=>'Debes proporcionar un titulo para el proyecto'
-
+            'title.required'=>'Debes proporcionar un titulo para el proyecto',
+            'image.image'=>'La imagen deber ser en formato jpg, png, git, jpeg'
         ];
     }
 
