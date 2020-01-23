@@ -47,7 +47,12 @@ class ProjectController extends Controller
 
     public function store(SaveProjectRequest $request)
     { 
+
+        if($request->has('image')){
+            $request->file('image')->store('public');   
+        }
         Project::create($request->validated());
+
         return redirect()->route('project.index')->with('status','El proyecto fue creado con éxito');
     }
 
@@ -72,6 +77,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+
         return view('projects.edit',['project' => $project]);
     }
 
@@ -84,6 +90,9 @@ class ProjectController extends Controller
      */
     public function update(Project $project,SaveProjectRequest $request)
     {
+        if($request->has('image')){
+            $project->image = $request->file('image')->store('public');   
+        }
         $project->update($request->validated());
         //view('projects.update',$project);
         return redirect()->route('project.show',$project)->with('status','El proyecto fue actualizado correctamente');

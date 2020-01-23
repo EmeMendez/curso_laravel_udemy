@@ -5,8 +5,9 @@ Proyectos | nuevo proyecto
 @section('content')
    <h1>Nuevo Proyecto</h1>
    @include('partials.validation_errors')
-   <form method="post" action="{{ route('project.store') }}" >
-   		@include('projects._form',['buttom' => 'Crear' ])
+   <form method="post" action="{{ route('project.store') }}" enctype="multipart/form-data" >
+         @include('projects._form',['buttom' => 'Crear' ])
+         
    </form>
    
 @endsection
